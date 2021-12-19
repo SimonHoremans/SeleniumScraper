@@ -1,0 +1,33 @@
+
+name: ScraperCI/CD
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  publish:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.x
+    - name: show files
+      run: ls -lR
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Publish ScrapeApp
+      run: dotnet publish -r win-x64 -c Release /p:PublishSingleFile=true
+    - name: show files
+      run: ls -lR
+    - name: Upload ScrapeApp
+      uses: actions/upload-artifact@v2
+      with:
+        name: ScrapeApp
+        path: ./scrape/bin/Release/netcoreapp3.1/win-x64/publish
