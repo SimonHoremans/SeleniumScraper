@@ -86,6 +86,8 @@ namespace scrape
 
             Scraper.CheckAndClick(XPathsGeneral["sort by"]);
             Scraper.CheckAndClick(XPathsSort[sortBy]);
+            //Console.WriteLine("scraper");
+            //Console.WriteLine(XPathsSort[sortBy]);
             Scraper.Refresh();
 
             var gameResults = Scraper.GetElements(XPathsGeneral["results"]);

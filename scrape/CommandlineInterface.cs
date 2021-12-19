@@ -368,8 +368,8 @@ namespace scrape
                 var searchTerm = TextInput("searchTerm: ");
                 var choicePlayers = new List<string> { posPlayers[int.Parse(ListMenu(posPlayers, ""))] };
                 var choiceTags = new List<string> { posTags[int.Parse(ListMenu(posTags, ""))] };
-                var choiceSort = posSort[int.Parse(ListMenu(posOffers, ""))];
-                var choiceOffers = Convert.ToBoolean(int.Parse(ListMenu(posSort, "")));
+                var choiceSort = posSort[int.Parse(ListMenu(posSort, ""))];
+                var choiceOffers = Convert.ToBoolean(int.Parse(ListMenu(posOffers, "")));
 
                 var result = steamScraper.GetGames(searchTerm, choiceOffers, choiceSort, choiceTags, choicePlayers);
                 var options = new Dictionary<string, string>
